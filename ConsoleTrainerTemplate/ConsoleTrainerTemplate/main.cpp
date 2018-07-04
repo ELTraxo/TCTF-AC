@@ -1,10 +1,9 @@
 #include "Traxo.h"
 
-
 void TrainerInitializer(Trainer * tn);
 
 int main()
-{	
+{
 	Trainer * tn = &trainer;
 	Menu menu(*tn, "Traxo's Awesome Haxo");
 	menu.Init();
