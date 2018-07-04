@@ -21,7 +21,7 @@ Trainer::~Trainer()
 
 void Trainer::Init()
 {
-//	KeyTimer = clock();
+	//	KeyTimer = clock();
 	mem.Init(GameName);
 	bInitted = true;
 	bSearching = false;
@@ -62,9 +62,9 @@ Hack Trainer::Make::MakePatchHack(TCHAR * HackName, UINT pAddress, UINT szSize)
 }
 
 Hack Trainer::Make::MakePatchHack(TCHAR * HackName, Pat & pPattern, UINT szSize)
-{	
+{
 	char * cpPattern = new char[pPattern.pattern.size()];
-	
+
 	for (UINT i = 0; i < pPattern.pattern.size(); i++)
 		cpPattern[i] = pPattern.mask[i];
 
@@ -90,10 +90,10 @@ Hack Trainer::Make::MakePatchHack(TCHAR * HackName, Pat & pPattern, int iPattern
 Hack Trainer::Make::MakeInjectionHack(TCHAR * HackName, UINT pAddress, UINT szSize, std::vector<byte> vData)
 {
 	byte * pData = new byte[vData.size()];
-	
+
 	for (UINT x = 0; x < vData.size(); x++)
 		pData[x] = vData[x];
-	
+
 	Hack hack = Hack(HackName, mem, HackType::HOOK, pAddress, szSize, pData, (UINT)vData.size());
 
 	delete[] pData;
@@ -112,7 +112,7 @@ Hack Trainer::Make::MakeInjectionHack(TCHAR * HackName, Pat & pPattern, UINT szS
 		cpPattern[i] = pPattern.pattern[i];
 
 	Hack retHack = Hack(HackName, mem, HackType::HOOK, mem.pattern.ScanProcess(cpPattern, (char*)pPattern.mask.c_str(), false), szSize, pData, vData.size());
-	
+
 	delete[] pData;
 	delete[] cpPattern;
 
@@ -232,7 +232,7 @@ bool Trainer::Update()
 {
 	using namespace std::chrono;
 	steady_clock::time_point check = steady_clock::now();
-	
+
 	//duration<int, milliseconds> timeSince = steady_clock::now() - keyTimer;
 	duration<float> runtime = check - keyTimer;
 	for each(Hack & hack in Options)
@@ -268,5 +268,3 @@ std::vector<std::reference_wrapper<Hack>> & Trainer::GetOptions()
 {
 	return Options;
 }
-
-

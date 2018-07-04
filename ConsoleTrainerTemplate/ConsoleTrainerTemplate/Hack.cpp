@@ -107,7 +107,7 @@ void Hack::InitHackAndAddress(TCHAR * HackName, HackType ht, ValType vt, uintptr
 	this->ht = ht;
 	this->vt = vt;
 	this->pAddress = pAddress;
-	if(ht != HackType::CODEPATCH || ht != HackType::HOOK)
+	if (ht != HackType::CODEPATCH || ht != HackType::HOOK)
 		AddHackToVec();
 }
 
@@ -127,7 +127,7 @@ void Hack::ReInit()
 {
 	if (!vOldBytes.empty())
 		vOldBytes.clear();
-	
+
 	if (pCaveAddress != NULL)
 		pCaveAddress = NULL;
 
