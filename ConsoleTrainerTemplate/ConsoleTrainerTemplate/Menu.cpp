@@ -27,8 +27,7 @@ void Menu::Init()
 
 void Menu::ClearScreen()
 {
-	for (int x = 0; x < 100; x++)
-		printf("\n");
+	system("cls");
 }
 
 void Menu::AddHeader(std::string sHeader)
